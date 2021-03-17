@@ -22,12 +22,12 @@ sub process_packet {
 
     my $ip_obj = NetPacket::IP->decode($eth_obj->{data});
     my $tcp_obj = NetPacket::TCP->decode($ip_obj->{data});
-    # my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($header->{tv_sec});
-    # print sprintf("%4d-02d-%02d %02d:%02d:%02d", 
-    # $year+1900, $mon, $mday, $hour, $min, $sec); 
+    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($header->{tv_sec});
+    print sprintf("%4d-02d-%02d %02d:%02d:%02d", 
+    $year+1900, $mon, $mday, $hour, $min, $sec); 
 
-    # print $header->{tv_sec}, "  ", $header->{tv_usec}, "\n";
-    # print "\t", $ip_obj->{src_ip}, ":", $tcp_obj->{src_port}, 
-    #     " -> ", 
-    #     $ip_obj->{dest_ip}, ":", $tcp_obj->{dest_port}, "\n";
+    print $header->{tv_sec}, "  ", $header->{tv_usec}, "\n";
+    print "\t", $ip_obj->{src_ip}, ":", $tcp_obj->{src_port}, 
+        " -> ", 
+        $ip_obj->{dest_ip}, ":", $tcp_obj->{dest_port}, "\n";
 }
